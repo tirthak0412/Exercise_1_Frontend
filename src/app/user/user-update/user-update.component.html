@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col s12">
+    <div id="html-validations" class="card card-tabs">
+      <div class="card-content">
+        <div class="card-title">
+          <div class="row">
+            <div class="col s12 m6 l10">
+              <h4 class="card-title">Update User</h4>
+            </div>
+          </div>
+        </div>
+        <div id="html-view-validations">
+          <form method="get" [formGroup]="updateUserForm" (ngSubmit)="onUserUpdate()" #f="ngForm">
+            <div class="row form-group ">
+
+              <div class="input-field col m6 s12">
+                <input formControlName="firstname" matInput type="text" required placeholder="First Name*">
+                <mat-label
+                  *ngIf="updateUserForm.get('firstname').hasError('required') && !updateUserForm.get('firstname').pristine ">
+                  First Name
+                  is required.</mat-label>
+                <mat-label
+                  *ngIf="updateUserForm.get('firstname').hasError('pattern') && !updateUserForm.get('firstname').pristine ">
+                  First
+                  Name
+                  should allow only charecters.</mat-label>
+                <mat-label
+                  *ngIf="updateUserForm.get('firstname').hasError('minlength') && !updateUserForm.get('firstname').pristine ">
+                  First Name
+                  should have minimum 3 charecters.</mat-label>
+              </div>
+
+              <div class="input-field col m6 s12">
+                <input formControlName="lastname" matInput type="text" required placeholder="Last Name*">
+                <mat-label
+                  *ngIf="updateUserForm.get('lastname').hasError('required') && !updateUserForm.get('lastname').pristine ">
+                  Last Name
+                  is required.</mat-label>
+                <mat-label
+                  *ngIf="updateUserForm.get('lastname').hasError('pattern') && !updateUserForm.get('lastname').pristine ">
+                  Last
+                  Name
+                  should allow only charecters.</mat-label>
+              </div>
+
+              <div class="input-field col s12">
+                <button class="btn waves-effect waves-light right  form-control" type="submit" [disabled]="!f.valid"
+                  mat-raised-button>Submit
+                  <i class="material-icons right">send</i>
+                </button>
+
+                <button class="btn waves-effect waves-light form-control" style="float: left;margin-right: 0;"
+                  type="button" mat-raised-button (click)="onReturn()">Back
+                  <i class="fas fa-arrow-left"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
